@@ -1,0 +1,33 @@
+<div *ngIf="loading" class="text-center">Chargement...</div>
+
+<div class="row" *ngIf="track && !loading">
+  <div class="col-md-2">
+    <img [src]="track.album.image[0]['#text']" style="width: 100%;">
+  </div>
+
+  <div class="col-md-4">
+
+    <h3>
+      <small>Nom</small><br>
+      {{ track.name }}
+    </h3>
+
+    <h3><small>Duration</small><br>{{ track.duration | date:'mm:ss' }}</h3>
+
+    <h3><small>Listener</small><br>{{ track.listeners | number }}</h3>
+
+    <h3><small>Artiste</small><br>{{ track.artist.name }}</h3> 
+
+    <h3><small>Album</small><br>{{ track.album.title }}</h3>
+
+    <h3><small>Publication</small><br>{{ track.wiki.published | date }}</h3><br>
+
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <h3><small>Resumé</small><br></h3>
+      <blockquote>{{ track.wiki.summary}}</blockquote><br>
+    </div>
+  </div>
+</div>

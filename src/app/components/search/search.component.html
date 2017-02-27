@@ -1,0 +1,44 @@
+<h1>Recherche Musique ?</h1> 
+
+<p class="lead">Rechercher de la Musique sur LastFm grace son API universelle...</p>
+
+<div class="form-group">
+  <form name="SearchForm" (submit)="searchMusic()">
+    <div class="input-group">
+    <input 
+      class="form-control" 
+      type="text" 
+      name="search" 
+      [(ngModel)]="search" 
+      placeholder="Rechercher Musique...">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="loading">Chargement...</div>
+
+<div *ngIf="tracks">
+  <div *ngFor="let res of tracks">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="well">
+          <div class="media">
+            <div class="media-left">
+              <a href="artist/{{ res.mbid }}" routerLink="artist/{{ res.mbid }}">
+                <img src="{{ res.image[0]['#text'] }}" width="64" height="64">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{ res.name }}</h4>
+              <span>{{ res.artist }}</span><br>
+              <small>{{ res.listeners | number }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
